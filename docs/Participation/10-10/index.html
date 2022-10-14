@@ -37,19 +37,32 @@
         myObject.name = "Bobby B."
         console.log(myObject.name)
 
+        var currentDate = {
+            dateTime: null,
+
+        }
+
+        document.getElementById("update-date")
+            .addEventListener("click", pizzaTime);
+        
+        function pizzaTime(){
+            console.log("Its time for pizza...")
+        };
+
     </script>
 </head>
 
 <body>
-
+    <h1>More Javascript, Yay!</h1>
+    <p>
+        <span id="date-text">
+            Click the button...
+        </span>
+    </p>
+    <p>
+        <button id="update-date">Click to see current date time!</button>
+    </p>
 </body>
 </html> 
-
-
-
-
-
-
-
 
 <a href="../../index.html">Back to Participation</a>
