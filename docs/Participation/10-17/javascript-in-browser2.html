@@ -61,6 +61,8 @@
 
             function updateClock() {
                 console.log("I'm a clock!");
+                let date = new Date();
+                document.getElementById("date-span").textContent = date;
             }
             function addDiv(){
                 if(document.getElementById("temp-div") == null){
@@ -69,28 +71,46 @@
                     newDiv.style = "border:2px solid red; padding: 10px;"
                     document.getElementById("container").appendChild(newDiv);
                 }
-
+                //add paragraph to new div
                 let newP = document.createElement("p");
                 let date = new Date();
 
-                newP.textContent = 'Hello, World! I was created at ${date}';
-                document.getElementById("temp-div").appendChild(newP);
+                newP.textContent = `Hello, World! I was created at ${date}`;
+            };
+            let mouseHover = document.getElementById("fieldset");
+            mouseHover.addEventListener("mouseover", () => {
+                // alert("hovering over a fieldset");
+                let divs = documemt.getElementsByTagName("div");
+                //change background
+                for (const div of divs){
+                    div.style.setProperty("background-color", "yellow");
+                }
+                //insert rule into stylesheet
+                document.styleSheets[0].insertRule("li {background-color:purple;}")
+            });
 
-                document.getElementById("temp-div").addEventListener("click", ()=> {
-                    alert("temp-dev clicked")
-                });
+            document.getElementById("fieldset").addEventListener("mouseout", function(){
+                 // alert("hovering over a fieldset");
+                 let divs = documemt.getElementsByTagName("div");
+                //change background
+                for (const div of divs){
+                    div.style.removeProperty("background-color", "yellow");
+                }
+                //insert rule into stylesheet
+                document.styleSheets[0].deleteRule("li")
+            });
+            //add eventListener for button:
+            document.getElementById("remove-div").addEventListener("click", removeDiv);
+            document.getElementById("add-div").addEventListener("click", addDiv);
 
-                document.getElementById("container")
-                    .addEventListener("click", function(e){
-                        if(e.target.id == "temp-div"){
-                            alert("dynamic temp-div clicked!");
-                        }
-                        else{
-                            alert("it was not temp-div");
-                        }
-                    });
-            };  
-
+            function addDiv(){
+                document
+            };
+            function removeDiv(){
+                if(document.getElementById("temp-div") != null){
+                    document.getElementById("temp-div").remove();
+                }     
+            };
         }//end of onload function
     </script>
 </head>
@@ -120,7 +140,7 @@
     </ul>
     </p>
     <!-- #1 -->
-    <fieldset>
+    <fieldset id = "fieldset">
         <legend>
             <strong><em>JavaScript Clock</em></strong>
         </legend>

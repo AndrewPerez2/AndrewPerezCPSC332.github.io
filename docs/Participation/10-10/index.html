@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <head>
     <script>
-        var myArray = [1, 2, 3, 4];
+        var myArray = [1, 2, 3, 4]; //create a var 
         for(let index = 0; index < array.length; i++){
             console.log(myArray[i]);
-        }
+        } // 1 2 3 4
         for (const myVal of myArray){
             console.log(myVal);
-        }
+        } 
 
-        myArray.forEach(function(){
+        myArray.forEach(function(item, i){
             console.log(item + " " + i);
         });
 
@@ -24,18 +24,22 @@
             anArray: [1,2,3,4,5,6],
 
             //aka echo
-            getObjectDataString: function(){
+            echo: function(value){
                 console.log(value);
             },
             get numberPlusOne(){
                 return this.someNumber + 1;
             },
             set someNumberPlusAnother(num){
-                
-            }
+                someNumber = num;
+            },
         };
-        myObject.name = "Bobby B."
-        console.log(myObject.name)
+        myObject.name = "Bobby B.";
+        myObject.echo("HELLO MY INNER DEMONS!");
+        console.log(myObject.name);
+        console.log(myObject.numberPlusOne);//getter so no parens
+        console.log(myObject.someNumberPlusAnother(2));
+
 
         var currentDate = {
             dateTime: null,

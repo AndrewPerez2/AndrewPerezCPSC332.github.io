@@ -61,15 +61,51 @@
 
             function updateClock() {
                 console.log("I'm a clock!");
+                let date = new Date();
+                document.getElementById("date-span").textContent = date;
             }
             function addDiv(){
                 if(document.getElementById("temp-div") == null){
                     let newDiv = document.createElement("div");
                     newDiv.id = "temp-div";
                     newDiv.style = "border:2px solid red; padding: 10px;"
+                    document.getElementById("container").appendChild(newDiv);
                 }
             };
+            let mouseHover = document.getElementById("fieldset");
+            mouseHover.addEventListener("mouseover", () => {
+                // alert("hovering over a fieldset");
+                let divs = documemt.getElementsByTagName("div");
+                //change background
+                for (const div of divs){
+                    div.style.setProperty("background-color", "yellow");
+                }
+                //insert rule into stylesheet
+                document.styleSheets[0].insertRule("li {background-color:purple;}")
+            });
 
+            document.getElementById("fieldset").addEventListener("mouseout", function(){
+                 // alert("hovering over a fieldset");
+                 let divs = documemt.getElementsByTagName("div");
+                //change background
+                for (const div of divs){
+                    div.style.removeProperty("background-color", "yellow");
+                }
+                //insert rule into stylesheet
+                document.styleSheets[0].deleteRule("li")
+            });
+            //add eventListener for button:
+            document.getElementById("remove-div").addEventListener("click", removeDiv);
+            document.getElementById("add-div").addEventListener("click", addDiv);
+
+            function addDiv(){
+                document
+            };
+            function removeDiv(){
+                if(document.getElementById("temp-div") != null){
+                    document.getElementById("temp-div").remove();
+                }     
+            };
         }//end of onload function
     </script>
 </head>
@@ -99,7 +135,7 @@
     </ul>
     </p>
     <!-- #1 -->
-    <fieldset>
+    <fieldset id = "fieldset">
         <legend>
             <strong><em>JavaScript Clock</em></strong>
         </legend>
